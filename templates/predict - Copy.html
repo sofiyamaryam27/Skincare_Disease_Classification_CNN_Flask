@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        background-color: #f2f2f2;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        width: 400px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: monospace;
+      }
+
+      .box {
+        background-color: #f2f2f2;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .text-container {
+        flex-basis: 60%;
+      }
+
+      .image-container {
+        flex-basis: 35%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      img {
+        max-width: 200px;
+        max-height: 200px;
+        border: 2px solid white;
+        border-radius: 5px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        color: #978c81;
+      }
+
+      .result {
+        font-size: 25px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .button,
+      .history-button {
+        background-color: #b8b19e;
+        border: none;
+        color: black;
+        padding: 16px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        cursor: pointer;
+        border: 3px solid white;
+        border-radius: 8px;
+        margin-right: 10px;
+      }
+
+      html,
+      body,
+      div,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: "Roboto", sans-serif;
+        font-weight: 100;
+      }
+
+      .nav {
+        background: #bfaf95;
+        height: 60px;
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 40px;
+      }
+
+      .nav li:hover {
+        background: #b8b19e;
+        transition: background 0.3s;
+      }
+
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
+      footer {
+        background-color: #f2f2f2;
+        padding: 10px 0;
+        border-radius: 6px;
+        margin-top: auto;
+      }
+
+      footer p {
+        font-size: 17px;
+        color: #666;
+        margin-right: 10px;
+        margin-left: 130px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/home" class="nav-link">More Info</a></li>
+        <li><a href="/types" class="nav-link">About Types</a></li>
+        <li><a href="/" class="nav-link">Predict</a></li>
+        <li><a href="/history" class="nav-link">History</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="box">
+        <div class="text-container">
+          <h1>Prediction Result</h1>
+          <div class="result">
+            <h3>{{ data }}</h3>
+            <p>Confidence: {{ confidence }}%</p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="{{ image_path }}" alt="Uploaded Image" />
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="text-container">
+          <h4>Prediction Result</h4>
+          <div class="result">
+            {% if data=="Actinic Keratosis - Benign." %}
+             <p style="font-weight: bold; font-size: 12px;">Medical Treatment:</p>
+             <ul style="font-size: 10px;">
+              <li>Cryotherapy </li>
+              <li>Prescription 5-fluorouracil (5-FU)</li>
+              <li>Prescription imiquimod</li>
+              <li>Tirbanibulin</li>
+              <li>Photodynamic Therapy</li>
+             </ul>
+            {% endif %}
+          </div>
+        </div>       
+      </div>
+
+      <div class="button-container">
+        <a class="button" href="/">Next Prediction</a>
+        <a class="history-button" href="/history">My History</a>
+      </div>
+    </div>
+
+   
+  </body>
+</html>

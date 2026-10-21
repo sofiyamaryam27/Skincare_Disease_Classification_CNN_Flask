@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        background-color: #f2f2f2;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        width: 800px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: monospace;
+      }
+
+      .box {
+        background-color: #f2f2f2;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .text-container {
+        flex-basis: 60%;
+      }
+
+      .image-container {
+        flex-basis: 35%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      img {
+        max-width: 200px;
+        max-height: 200px;
+        border: 2px solid white;
+        border-radius: 5px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        color: #978c81;
+      }
+
+      .result {
+        font-size: 15px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .button,
+      .history-button {
+        background-color: #b8b19e;
+        border: none;
+        color: black;
+        padding: 16px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        cursor: pointer;
+        border: 3px solid white;
+        border-radius: 8px;
+        margin-right: 10px;
+      }
+
+      html,
+      body,
+      div,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: "Roboto", sans-serif;
+        font-weight: 100;
+      }
+
+      .nav {
+        background: #bfaf95;
+        height: 60px;
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 40px;
+      }
+
+      .nav li:hover {
+        background: #b8b19e;
+        transition: background 0.3s;
+      }
+
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
+      footer {
+        background-color: #f2f2f2;
+        padding: 10px 0;
+        border-radius: 6px;
+        margin-top: auto;
+      }
+
+      footer p {
+        font-size: 17px;
+        color: #666;
+        margin-right: 10px;
+        margin-left: 130px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/home" class="nav-link">More Info</a></li>
+        <li><a href="/types" class="nav-link">About Types</a></li>
+        <li><a href="/" class="nav-link">Predict</a></li>
+        <li><a href="/history" class="nav-link">History</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="box">
+        <div class="text-container">
+          <h1>Prediction Result</h1>
+          <div class="result">
+            <h3>{{ data }}</h3>
+            <p>Confidence: {{ confidence }}%</p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="{{ image_path }}" alt="Uploaded Image" />
+        </div>
+      </div>
+     {% if data=="Actinic Keratosis - Benign." %}
+      <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">Cryotherapy, Prescription 5-fluorouracil (5-FU), Prescription imiquimod, Tirbanibulin, Photodynamic therapy, Curettage or other lesion-directed procedures.</p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">Green leafy vegetables,Broccoli, carrots, tomatoes and other vegetables,Fruits such as oranges, guava, papaya and berries, Lentils, beans and chickpeas, Eggs, Fish/chicken, Nuts and seeds, Whole grains, Milk/curd if tolerated, Plenty of water </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">There is no specific food that must be completely avoided because of AK. Avoiding rice, milk, eggs, fish or chicken is not medically required. Limit highly processed foods and sugary drinks as part of a generally healthy diet.</p>
+      </div>
+       {% elif data=="Basal Cell Carcinoma - Malignant."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Surgical excision,Mohs micrographic surgery, Curettage and electrodesiccation, Cryosurgery, Radiation therapy, Photodynamic therapy, Selected topical treatments such as imiquimod, Advanced cases may require targeted/systemic treatment such as vismodegib, sonidegib or other specialist treatments. 
+        </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Vegetables, Fruits, Whole grains, Beans/lentils, Eggs, Fish/chicken, Nuts/seeds, Adequate protein, Plenty of water 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          There is no BCC-specific food that must be completely avoided. Limit highly processed foods and sugary drinks. Avoid alcohol if a treating doctor advises avoiding it, particularly during cancer treatment. 
+        </p>
+      </div>
+        {% elif data=="Dermatofibroma - Malignant."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+         No treatment is required if the diagnosis is clear and it is not causing problems. A dermatologist may recommend removal or biopsy if the diagnosis is uncertain or the lesion is troublesome. 
+        </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+         Normal balanced diet, Vegetables, Fruits, Dal/beans, Eggs, Fish/chicken, Whole grains, Nuts/seeds, Water 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+         No specific food restriction.You do not need to stop milk, eggs, rice, fish or chicken because of dermatofibroma. 
+        </p>
+        </div>
+
+        {% elif data=="Melanoma - Malignant."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Surgical removal, Immunotherapy, Targeted therapy, Radiation in selected situations, Other specialist cancer treatments.
+        </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Vegetables, Whole fruits, Beans/lentils, Whole grains, Eggs, Fish/chicken, Nuts/seeds, Adequate protein, Adequate fluids 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Highly processed foods, Sugary drinks, Excessive sweets, Processed meats, Large amounts of red meat, Alcohol, particularly when the medical team advises avoiding it 
+        </p>
+       </div>    
+
+        {% elif data=="Nevus - Benign."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          A stable benign nevus usually needs no medicine. If it looks suspicious or changes, a dermatologist may examine it and sometimes perform a biopsy or remove it. 
+        </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Normal balanced diet, Vegetables, Fruits, Dal/beans, Eggs, Fish/chicken, Whole grains, Nuts/seeds, Water 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          No specific food restriction. No need to stop milk, egg, rice, fish or chicken. 
+        </p>
+       </div> 
+       
+       {% elif data=="Pigmented Benign Keratosis - Benign."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          If confidently diagnosed as benign, treatment may not be necessary. If the lesion is irritating or the diagnosis is uncertain, a dermatologist may recommend removal or biopsy. 
+        </p>
+        <br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Vegetables, Fruits, Dal/beans, Eggs, Fish/chicken, Whole grains, Nuts/seeds, Water 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          No specific food needs to be completely avoided. Limit highly processed foods and excess sugary drinks for general health. 
+        </p>
+       </div> 
+
+        {% elif data=="Seborrheic Keratosis - Benign."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Cryotherapy, Curettage, Shave removal, Electrosurgery or another appropriate procedure 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Normal balanced diet, Vegetables, Fruits, Lentils/beans, Eggs, Fish/chicken, Whole grains, Nuts/seeds, Water 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          No specific food needs to be completely avoided. Limit highly processed foods and excess sugary drinks for general health. 
+        </p>
+       </div> 
+
+        {% elif data=="Vascular Lesion - Benign."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Medical Treatment:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Observation, Laser treatment, Procedure/surgical treatment, Other specialist treatment 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Eat</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Vegetables, Fruits, Dal/beans, Eggs, Fish/chicken, Whole grains, Nuts/seeds, Water.
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Foods to Avoid</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Usually no specific food restriction. Any restriction would depend on the exact vascular condition and other medical factors. 
+        </p>
+       </div> 
+
+        {% elif data=="Unknown cancer type."  %}
+        <div class="m-result">
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Breakfast:</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Idli/dosa + sambar or Oats + fruit or Eggs + whole-grain bread 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Lunch</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Rice/chapati, Vegetables, Dal/sambar, Curd, Egg/fish/chicken if desired 
+        </p><br>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Evening</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Fruit, Nuts, Milk/curd if tolerated 
+        </p>
+        <p style="font-weight: bold;font-size: 12px; text-align: left;">Dinner</p>
+        <p style="font-size: 12px;text-align: justify;">
+          Chapati/rice, Vegetables, Dal/beans, Egg/fish/chicken 
+        </p>
+       </div> 
+
+     {% endif %}
+      
+      <div class="button-container">
+        <a class="button" href="/">Next Prediction</a>
+        <a class="history-button" href="/history">My History</a>
+      </div>
+    </div>
+
+  </body>
+</html>

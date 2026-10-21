@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin-Disease-Classification-CNN</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        background-color: #f2f2f2;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        padding: 20px;
+        width: 600px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: monospace;
+      }
+
+      .quote-text {
+        font-size: 25px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      hr {
+        border: none;
+        border-top: 3px solid #ccc;
+        width: 75%;
+        margin: 10px auto;
+      }
+
+      input[type="submit"] {
+        background: none;
+        display: block;
+        border: 0;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #3498db;
+        border-radius: 24px;
+        border-color: #d1cfce;
+        padding: 10px 40px;
+        color: rgb(54, 52, 52);
+        outline: none;
+        transition: 0.24s;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #2ecc71;
+      }
+
+      input[type="file"] {
+        background-color: rgb(176, 160, 128);
+        color: white;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 10px;
+        font-size: large;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      footer {
+        background-color: #f2f2f2;
+        padding: 10px 0;
+        border-radius: 6px;
+        margin-top: auto;
+      }
+
+      footer p {
+        font-size: 17px;
+        color: #666;
+        margin-right: 10px;
+        margin-left: 130px;
+        display: inline-block;
+      }
+
+      .history-button {
+        background-color: #b8b19e;
+        border: none;
+        color: black;
+        padding: 12px 24px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      html,
+      body,
+      div,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: "Roboto", sans-serif;
+        font-weight: 100;
+      }
+
+      .nav {
+        background: #bfaf95;
+        height: 60px;
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 40px;
+      }
+
+      .nav li:hover {
+        background: #b8b19e;
+        transition: background 0.3s;
+      }
+
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/home" class="nav-link">More Info</a></li>
+        <li><a href="/types" class="nav-link">About Types</a></li>
+        <li><a href="/" class="nav-link">Predict</a></li>
+        <li><a href="/history" class="nav-link">History</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <p class="quote-text">
+        " Your skin is precious. Shield it from the sun, hydrate it, and keep it
+        healthy. "
+      </p>
+      <hr />
+      <h1>Import an Image to Classify</h1>
+
+      <form action="/predict-type" method="post" enctype="multipart/form-data">
+        <div class="button-container">
+          <input type="file" name="image" accept="image/*" />
+          <input type="submit" name="btn" value="Predict" />
+        </div>
+      </form>
+
+      <a class="history-button" href="/history">View History</a>
+    </div>
+
+    <footer>
+    <center>
+      <p>--- Protect Your Skin, Protect Your Life ---</p>
+	</center>
+    </footer>
+  </body>
+</html>

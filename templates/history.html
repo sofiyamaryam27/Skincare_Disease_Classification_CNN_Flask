@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction History</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        background-color: #f2f2f2;
+        font-family: monospace;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+
+      .columns {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .history-box {
+        background-color: #444;
+        border-radius: 8px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 30px;
+        max-width: 40%;
+      }
+
+      .text-container {
+        margin-bottom: 20px;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img {
+        max-width: 150px;
+        max-height: 150px;
+        border: 2px solid white;
+        border-radius: 5px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 30px;
+      }
+
+      .result {
+        font-size: 25px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .button,
+      .predict-button {
+        background-color: #b8b19e;
+        border: none;
+        color: black;
+        padding: 16px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        cursor: pointer;
+        border: 3px solid white;
+        border-radius: 8px;
+        margin-right: 10px;
+      }
+
+      html,
+      body,
+      div,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: "Roboto", sans-serif;
+        font-weight: 200;
+      }
+
+      .nav {
+        background: #bfaf95;
+        height: 60px;
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 40px;
+      }
+
+      .nav li:hover {
+        background: #b8b19e;
+        transition: background 0.3s;
+      }
+
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/home" class="nav-link">More Info</a></li>
+        <li><a href="/types" class="nav-link">About Types</a></li>
+        <li><a href="/" class="nav-link">Predict</a></li>
+        <li><a href="/history" class="nav-link">History</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <h1 style="margin-bottom: 20px; margin-top: 20px">Prediction History</h1>
+      {% if prev_predictions %}
+      <div class="columns">
+        {% for prediction in prev_predictions %}
+        <div class="history-box">
+          <div class="text-container">
+            <h3>{{ prediction['class_name'] }}</h3>
+          </div>
+          <div class="image-container">
+            <img
+              src="{{ prediction['image_path'] }}"
+              alt="Previous Prediction Image"
+            />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <h3 style="margin: 10px">There are no previous predictions available.</h3>
+      {% endif %}
+      <div class="button-container">
+        <a class="button" href="/">New Prediction</a>        
+      </div>
+    </div>
+  </body>
+</html>
