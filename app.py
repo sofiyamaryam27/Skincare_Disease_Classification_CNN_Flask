@@ -85,4 +85,10 @@ def history():
     return render_template('history.html', prev_predictions=prev_predictions)
 
 if __name__ == "__main__":
-    app.run()
+    import os
+    from pyngrok import ngrok, conf
+    os.system("taskkill /F /IM ngrok.exe >nul 2>&1")
+    conf.get_default().auth_token = "3L3ESI4f1GfZX9FaonW4ymRiZHa_4KXTLht97kgGGqMvxcJAt"
+    url = ngrok.connect(5000, pooling_enabled=True)
+    print("PUBLIC LINK:", url)
+    app.run(port=5000, debug=False, use_reloader=False)
